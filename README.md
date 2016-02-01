@@ -4,7 +4,7 @@ This is a plugin for Maven Surefire that will cause every single (JUnit) test me
 
 To use it, first download and `mvn install` this project. Then, in the project that you're interested in, modify your surefire configuration to specify a dependency on this isolated runner, and ensure that `reuseForks` is set to false. Setting `reuseForks` to false will cause Surefire to use a fresh JVM for each test, and adding the dependency on the `isolatedRunner` will force Surefire to do that for each test method, rather than just per test class. Configuration snippet:
 
-```
+```xml
 <project>
 	...
 	<build>
