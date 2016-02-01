@@ -79,7 +79,7 @@ public class IsolatedJUnitProvider extends AbstractProvider {
 	}
 
 	public Iterator<?> getSuites() {
-		TestMethodsToRun toRun = new TestMethodsToRun(scanClassPath(),isJunit4);
+		TestMethodsToRun toRun = new TestMethodsToRun(scanClassPath(), isJunit4);
 		return toRun.iterator();
 	}
 
@@ -127,7 +127,7 @@ public class IsolatedJUnitProvider extends AbstractProvider {
 		reporter.testSetStarting(report);
 		try {
 			for (final Method method : clazz.getMethods()) {
-				if (SelectorUtils.match(requestedTestMethod, method.getName())) {
+				if (method.getParameterTypes().length == 0 && requestedTestMethod.equals(method.getName())) {
 					Request.method(clazz, method.getName()).getRunner().run(listeners);
 				}
 			}
